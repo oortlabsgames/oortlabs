@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Clankpit | Oort Labs</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
+    h1, h2 { color: #111; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy for Clankpit</h1>
+  <p><strong>Effective Date:</strong> November 22, 2026</p>
+  <p><strong>Oort Labs</strong> ("we," "our," or "us") built the mobile game <strong>Clankpit</strong> as a free-to-play game supported by advertisements and optional in-app purchases. This Privacy Policy explains how information is collected, used, and shared when you play Clankpit.</p>
+
+  <h2>1. Information We Collect and Third-Party Services</h2>
+  <p>We do not require you to create an account or directly submit personal information such as your name or home address to play Clankpit. Game progress is stored locally on your device.</p>
+  <p>However, Clankpit uses trusted third-party services that may automatically collect device and usage data to provide ads, process purchases, and maintain app stability:</p>
+  <ul>
+    <li><strong>Google AdMob:</strong> Used to display advertisements. AdMob may collect your device's Advertising ID, IP-derived approximate location, app interaction data, and crash/performance diagnostics to serve and measure ads.</li>
+    <li><strong>Google Play Billing:</strong> Used to process optional in-app purchases. Payment details are handled securely by Google Play; we only receive purchase confirmation tokens and order IDs.</li>
+    <li><strong>Google Play Services:</strong> Used for core app distribution, licensing, and basic diagnostics.</li>
+  </ul>
+
+  <h2>2. How Information Is Used</h2>
+  <p>Data collected through these third-party SDKs is used strictly for:</p>
+  <ul>
+    <li>Delivering and measuring in-game advertisements.</li>
+    <li>Processing and verifying optional in-app purchases.</li>
+    <li>Detecting crashes, preventing fraud, and improving game performance.</li>
+  </ul>
+
+  <h2>3. Data Retention and Your Choices</h2>
+  <p>You can reset or limit personalized advertising at any time through your Android device settings under <strong>Settings &gt; Google &gt; Ads</strong> (or <strong>Privacy &gt; Ads</strong>). Uninstalling Clankpit removes locally stored game save data from your device.</p>
+
+  <h2>4. Children's Privacy</h2>
+  <p>Clankpit is not directed to children under the age of 13, and we do not knowingly collect personal information from children.</p>
+
+  <h2>5. Contact Us</h2>
+  <p>If you have any questions about this Privacy Policy, please contact <strong>Oort Labs</strong> at: <a href="mailto:oortlabsgames@gmail.com">oortlabsgames@gmail.com</a></p>
+</body>
+</html>
