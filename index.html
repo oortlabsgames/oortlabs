@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#121417" />
+  <title>Clankpit — Join the Android Closed Beta</title>
+  <meta name="description" content="Join the free Clankpit Android closed beta on Google Play in 3 quick steps." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <meta property="og:title" content="Clankpit — Android Closed Beta" />
+  <meta property="og:description" content="Play Clankpit early on Android. Join the closed test in 3 quick steps." />
+  <meta property="og:image" content="https://oortlabsgames.github.io/icon.png" />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #121417;
+      --surface: #1b1f26;
+      --surface-active: #222731;
+      --border: #2c3340;
+      --border-active: #f08a24;
+      --text: #f3f5f8;
+      --muted: #9aa4b4;
+      --accent: #f08a24;
+      --accent-hover: #ff9c38;
+      --accent-text: #14110e;
+      --done: #34c77b;
+      --done-bg: rgba(52, 199, 123, 0.12);
+      --warn-bg: rgba(240, 138, 36, 0.12);
+      --warn-border: rgba(240, 138, 36, 0.45);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(240, 138, 36, 0.16), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      min-height: 100%;
+    }
+
+    body {
+      padding: max(20px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+      display: flex;
+      justify-content: center;
+    }
+
+    main {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .app-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      display: block;
+      margin: 0 auto 10px;
+      image-rendering: pixelated;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(240, 138, 36, 0.14);
+      border: 1px solid rgba(240, 138, 36, 0.35);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .inapp-banner {
+      display: none;
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
+    }
+
+    .inapp-banner.visible {
+      display: block;
+    }
+
+    .inapp-banner strong {
+      display: block;
+      color: #ffbd75;
+      margin-bottom: 4px;
+    }
+
+    .inapp-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .copy-btn {
+      appearance: none;
+      border: 1px solid var(--warn-border);
+      background: rgba(18, 20, 23, 0.65);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .account-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .account-note strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .step.active {
+      background: var(--surface-active);
+      border-color: var(--border-active);
+    }
+
+    .step.done {
+      border-color: rgba(52, 199, 123, 0.45);
+    }
+
+    .step-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+      background: #272d38;
+      color: var(--text);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .step.active .step-num {
+      background: var(--accent);
+      color: var(--accent-text);
+      border-color: var(--accent);
+    }
+
+    .step.done .step-num {
+      background: var(--done-bg);
+      color: var(--done);
+      border-color: var(--done);
+    }
+
+    .step-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .step-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 16px;
+      border-radius: 11px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      background: #262c37;
+      color: var(--text);
+      border: 1px solid #384152;
+      transition: background-color 0.15s ease, transform 0.08s ease;
+    }
+
+    .step.active .step-btn {
+      background: var(--accent);
+      color: var(--accent-text);
+      border-color: var(--accent);
+    }
+
+    .step.active .step-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .step-btn:active {
+      transform: scale(0.99);
+    }
+
+    .step-hint {
+      margin: 8px 2px 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .step-hint strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    details {
+      margin-top: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--text);
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .faq-body {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-body p {
+      margin: 0;
+    }
+
+    .faq-body strong {
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 14px;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .step, .step-btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <img class="app-icon" src="icon.png" alt="Clankpit icon" width="68" height="68" />
+      <div class="badge">Android Closed Beta</div>
+      <h1>CLANKPIT</h1>
+      <p class="subtitle">Play early on Google Play — 3 quick steps.</p>
+    </header>
+
+    <section id="inapp-banner" class="inapp-banner" aria-live="polite">
+      <strong>Open in Chrome / Safari first</strong>
+      In-app browsers (TikTok, Instagram) usually aren't signed into Google. Tap <b>•••</b> and choose <b>Open in browser</b>, or copy this link.
+      <div class="inapp-actions">
+        <button id="copy-page-btn" class="copy-btn" type="button">Copy page link</button>
+      </div>
+    </section>
+
+    <p class="account-note">
+      Use the <strong>same Google account</strong> signed into your Android Play Store.
+    </p>
+
+    <div class="steps">
+      <section class="step active" data-step="1">
+        <div class="step-top">
+          <button class="step-num" type="button" aria-label="Toggle step 1 complete">1</button>
+          <h2 class="step-title">Join the tester group</h2>
+        </div>
+        <a class="step-btn" href="https://groups.google.com/g/oortlabs-testers" target="_blank" rel="noopener">
+          Open Google Group ↗
+        </a>
+        <p class="step-hint">Tap <strong>Join group</strong>, then come back here.</p>
+      </section>
+
+      <section class="step" data-step="2">
+        <div class="step-top">
+          <button class="step-num" type="button" aria-label="Toggle step 2 complete">2</button>
+          <h2 class="step-title">Become a tester</h2>
+        </div>
+        <a class="step-btn" href="https://play.google.com/apps/testing/com.oortlabs.clankpit" target="_blank" rel="noopener">
+          Opt In on Google Play ↗
+        </a>
+        <p class="step-hint">Tap <strong>Become a tester</strong> on the page.</p>
+      </section>
+
+      <section class="step" data-step="3">
+        <div class="step-top">
+          <button class="step-num" type="button" aria-label="Toggle step 3 complete">3</button>
+          <h2 class="step-title">Install Clankpit</h2>
+        </div>
+        <a class="step-btn" href="https://play.google.com/store/apps/details?id=com.oortlabs.clankpit" target="_blank" rel="noopener">
+          Download on Google Play ↗
+        </a>
+        <p class="step-hint">Please keep it installed for <strong>14 days</strong> to help us launch!</p>
+      </section>
+    </div>
+
+    <details>
+      <summary>Having trouble? Tap here</summary>
+      <div class="faq-body">
+        <p><strong>"App not available" or "Item not found"?</strong><br />
+        Make sure your browser and your Android Google Play Store app are signed into the exact same Google account. If you just joined, wait 1–2 minutes and try Step 3 again.</p>
+        <p><strong>Why 3 steps?</strong><br />
+        Google Play requires a 14-day closed test before full release. Joining the group unlocks the Play Store download for your account.</p>
+        <p><strong>Found a bug or have feedback?</strong><br />
+        Email us anytime at <a href="mailto:oortlabsgames@gmail.com" style="color: #ffbd75;">oortlabsgames@gmail.com</a>.</p>
+      </div>
+    </details>
+
+    <footer>
+      <span>Oort Labs</span>
+      <a href="https://oortlabsgames.github.io/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <a id="feedback-link" href="mailto:oortlabsgames@gmail.com?subject=Clankpit%20Beta%20Feedback">Feedback (oortlabsgames@gmail.com)</a>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var ua = navigator.userAgent || "";
+      var isInApp = /TikTok|BytedanceWebview|musical_ly|Instagram|FBAN|FBAV|Snapchat|Line\//i.test(ua);
+      var banner = document.getElementById("inapp-banner");
+      if (isInApp && banner) {
+        banner.classList.add("visible");
+      }
+
+      var copyBtn = document.getElementById("copy-page-btn");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function () {
+          var url = window.location.href;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(function () {
+              copyBtn.textContent = "Copied!";
+              setTimeout(function () { copyBtn.textContent = "Copy page link"; }, 2000);
+            });
+          } else {
+            window.prompt("Copy this link and open it in Chrome:", url);
+          }
+        });
+      }
+
+      var feedbackLink = document.getElementById("feedback-link");
+      if (feedbackLink) {
+        feedbackLink.addEventListener("click", function () {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText("oortlabsgames@gmail.com").then(function () {
+              var original = feedbackLink.textContent;
+              feedbackLink.textContent = "Email copied!";
+              setTimeout(function () { feedbackLink.textContent = original; }, 2200);
+            });
+          }
+        });
+      }
+
+      var storageKey = "clankpit_beta_steps_v1";
+      var done = {};
+      try {
+        done = JSON.parse(localStorage.getItem(storageKey) || "{}") || {};
+      } catch (e) {
+        done = {};
+      }
+
+      var stepEls = Array.prototype.slice.call(document.querySelectorAll(".step"));
+
+      function save() {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(done));
+        } catch (e) {}
+      }
+
+      function render() {
+        var activeAssigned = false;
+        stepEls.forEach(function (el) {
+          var id = el.getAttribute("data-step");
+          var numBtn = el.querySelector(".step-num");
+          var isDone = Boolean(done[id]);
+          el.classList.toggle("done", isDone);
+          el.classList.remove("active");
+          numBtn.textContent = isDone ? "✓" : id;
+          if (!isDone && !activeAssigned) {
+            el.classList.add("active");
+            activeAssigned = true;
+          }
+        });
+        if (!activeAssigned && stepEls.length) {
+          stepEls[stepEls.length - 1].classList.add("active");
+        }
+      }
+
+      stepEls.forEach(function (el) {
+        var id = el.getAttribute("data-step");
+        var link = el.querySelector(".step-btn");
+        var numBtn = el.querySelector(".step-num");
+
+        link.addEventListener("click", function () {
+          done[id] = true;
+          save();
+          render();
+        });
+
+        numBtn.addEventListener("click", function () {
+          done[id] = !done[id];
+          save();
+          render();
+        });
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
